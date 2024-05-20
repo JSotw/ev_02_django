@@ -1,0 +1,49 @@
+{% extends 'layout.html' %}
+{% block content %}
+  <section class="" style="display: grid; place-items: center;">
+    <section class="mx-lg-5 w-25 p-4">
+      <!-- Pills navs -->
+      <ul class="nav nav-pills nav-justified mb-3" id="ex1" role="tablist">
+        <li class="nav-item" role="presentation">
+          <a class="nav-link " id="tab-login" href="/" role="tab" aria-selected="false">Iniciar Sesión</a>
+        </li>
+        <li class="nav-item" role="presentation">
+          <a class="nav-link active" id="tab-register" href="/register/" role="tab" aria-selected="true">Registrar</a>
+        </li>
+      </ul>
+      <!-- Pills navs -->
+
+      <!-- Pills content -->
+      <div class="tab-content">
+        <form action="/register/" method="post">
+          {% csrf_token %}
+          <h5 class="text-center">Registrate</h5>
+          <br />
+          <!-- Username input -->
+          <div data-mdb-input-init class="form-outline mb-4">
+            <input type="text" name="username" id="registerUsername" class="form-control" />
+            <label class="form-label" for="registerUsername">Nombre de Usuario</label>
+          </div>
+
+          <!-- Email input -->
+          <div data-mdb-input-init class="form-outline mb-4">
+            <input type="email" name="email" id="registerEmail" class="form-control" />
+            <label class="form-label" for="registerEmail">Correo</label>
+          </div>
+
+          <!-- Password input -->
+          <div data-mdb-input-init class="form-outline mb-4">
+            <input type="password" name="password" id="registerPassword" class="form-control" />
+            <label class="form-label" for="registerPassword">Contraseña</label>
+          </div>
+          <div class="row mb-2">
+            <p class="text-danger" style="font-size: 11px;">{{ error }}</p>
+          </div>
+          <!-- Submit button -->
+          <button type="submit" class="btn btn-primary btn-block mb-3">Registrarme</button>
+        </form>
+      </div>
+      <!-- Pills content -->
+    </section>
+  </section>
+{% endblock %}

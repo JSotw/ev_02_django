@@ -1,0 +1,58 @@
+{% extends 'layout.html' %}
+{% load static %}
+{% block content %}
+  <body>
+    {% load static %}
+    <div class="container text-center">
+      <div class="row justify-content-md-center">
+        <div class="col-md-12 mt-4">
+          <h2>Lista de archivos</h2>
+          {{ message }}
+          <hr />
+        </div>
+        {% for row in data %}
+          {% if row.imagen %}
+            <div class="col-lg-3 col-md-2 col-sm-12 pb-4">
+              <div class="card" style="display: grid;place-items: center;width: 300px; height: 260px;">
+                <img src="{{ row.imagen.url }}" class="card-img-top" alt="{{ row.imagen.name }}" style="width: 100px;height: 100px;" />
+                <div class="card-body">
+                  <p class="card-text" style="font-size: 11px;text-wrap: wrap;text-overflow: ellipsis;">{{ row.imagen.name }}</p>
+                  <a href="{{ row.imagen.url }}" target="_blank" class="btn btn-primary bottom-0">Ver</a>
+
+                  <div style="display: grid; place-items: center;">
+                    <div class="d-flex gap-1 mt-1">
+                      <a class="btn btn-sm btn-warning"><i class="fa-solid fa-pen"></i></a>
+                      <a type="submit" href="/delete/{{ row.imagen.name }}" class="btn btn-sm btn-danger"><i class="fa-solid fa-trash"></i></a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          {% endif %}
+          <!--  -->
+          {% if row.documento %}
+            <div class="col-lg-3 col-md-2 col-sm-12 pb-4">
+              <div class="card p-2" style="display: grid;place-items: center;width: 300px; height: 260px;">
+                <img src="{% static 'document.png' %}" class="card-img-top" alt="{{ row.documento.name }}" style="width: 80px;height: 80px;" />
+                <div class="card-body">
+                  <p class="card-text" style="font-size: 11px;text-wrap: wrap;text-overflow: ellipsis;">{{ row.documento.name }}</p>
+                  <a href="{{ row.documento.url }}" class="btn btn-primary">Descargar</a>
+                  <div style="display: grid; place-items: center;">
+                    <div style="display: grid; place-items: center;">
+                      <div class="d-flex gap-1 mt-1">
+                        <a class="btn btn-sm btn-warning"><i class="fa-solid fa-pen"></i></a>
+                        <a type="submit" href="/delete/{{ row.documento.name }}" class="btn btn-sm btn-danger"><i class="fa-solid fa-trash"></i></a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          {% endif %}
+        {% empty %}
+          <p>No hay registros</p>
+        {% endfor %}
+      </div>
+    </div>
+  </body>
+{% endblock %}

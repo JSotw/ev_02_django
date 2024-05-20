@@ -1,0 +1,45 @@
+{% extends 'layout.html' %}
+{% block content %}
+  <section class="" style="display: grid; place-items: center;">
+    <section class="mx-lg-5 w-25 p-4">
+      <!-- Pills navs -->
+      <ul class="nav nav-pills nav-justified mb-3" id="ex1" role="tablist">
+        <li class="nav-item" role="presentation">
+          <a class="nav-link active" id="tab-login" href="/" role="tab" aria-selected="true">Iniciar Sesión</a>
+        </li>
+        <li class="nav-item" role="presentation">
+          <a class="nav-link" id="tab-register" href="/register/" role="tab"  aria-selected="false">Registrar</a>
+        </li>
+      </ul>
+      <!-- Pills navs -->
+
+      <!-- Pills content -->
+      <div class="tab-content">
+        <form action="" method="post">
+          {% csrf_token %}
+          <h5 class="text-center">Bienvenido</h5>
+          <br />
+          <!-- Email input -->
+          <div data-mdb-input-init class="form-outline mb-4">
+            <input type="text" name="username" id="username" class="form-control" />
+            <label class="form-label" for="username">Nombre de usuario</label>
+          </div>
+
+          <!-- Password input -->
+          <div data-mdb-input-init class="form-outline mb-4">
+            <input type="password" id="password" name="password" class="form-control" />
+            <label class="form-label" for="password">Contraseña</label>
+          </div>
+          <!-- 2 column grid layout -->
+          <div class="row mb-2">
+            <p class="text-danger" style="font-size: 11px;">{{ error }}</p>
+          </div>
+
+          <!-- Submit button -->
+          <button type="submit" class="btn btn-primary btn-block mb-4">Iniciar Sesión</button>
+        </form>
+      </div>
+      <!-- Pills content -->
+    </section>
+  </section>
+{% endblock %}
