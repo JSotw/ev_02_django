@@ -136,7 +136,7 @@ def user_register(request):
                     )
                     user.save()
                     login(request, user)
-                    return redirect('/home')
+                    return redirect('/upload')
                 except IntegrityError:
                     return render(request, 'register.html', {
                         'error': 'No se puede ingresar'
