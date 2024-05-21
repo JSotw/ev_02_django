@@ -64,8 +64,7 @@ def delete(request, folder, object):
 
         try:
             s3_client.delete_object(Bucket=bucket_name, Key=object_key)
-            print(f'El objeto {object_key} fue eliminado exitosamente de {
-                bucket_name}.')
+            print(f'El objeto {object_key} fue eliminado exitosamente de {bucket_name}.')
             if data_documento.count() > 0:
                 data_documento.update(documento="")
             if data_imagen.count() > 0:
